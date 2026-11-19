@@ -42,7 +42,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-APPS = []
+APPS = ["pages.apps.PagesConfig"]
 
 THIRD_PARTY_APPS = []
 
@@ -63,7 +63,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,"templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,7 +122,9 @@ USE_TZ = True    #for deployment, set this to False and use environment variable
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')    #for deployment, set this to your static files directory and use environment variable to set it
+STATIC_URL = 'static/'    #for deployment, set this to your static files URL and use environment variable to set it
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'config/static')]    #for deployment, set this to your static files directory and use environment variable to set it
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/6.1/ref/settings/#default-auto-field        
